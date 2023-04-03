@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/bg"
+	tools:context=".ui.MainFragment">
+
+	<TextView
+		android:id="@+id/title_tv"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="20dp"
+		android:text="Zikr App Title"
+		android:textColor="@color/white"
+		android:textSize="30sp"
+		app:layout_constraintBottom_toTopOf="@+id/title_desc_tv"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_chainStyle="packed" />
+
+	<TextView
+		android:id="@+id/title_desc_tv"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Title description"
+		android:textColor="@color/white"
+		android:textSize="24sp"
+		app:layout_constraintBottom_toTopOf="@+id/buttons"
+		app:layout_constraintEnd_toEndOf="@+id/title_tv"
+		app:layout_constraintStart_toStartOf="@+id/title_tv"
+		app:layout_constraintTop_toBottomOf="@+id/title_tv" />
+
+	<LinearLayout
+		android:id="@+id/buttons"
+		android:layout_width="match_parent"
+		android:layout_height="100dp"
+		android:gravity="center"
+		android:paddingBottom="10dp"
+		android:orientation="horizontal"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<Button
+			android:id="@+id/zikr_btn"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:alpha="0.5"
+			android:textSize="12sp"
+			android:layout_marginHorizontal="20dp"
+			android:backgroundTint="@color/light_gray"
+			android:drawableTop="@drawable/ic_zikr"
+			android:text="@string/zikr"
+			android:textColor="@color/black" />
+
+		<Button
+			android:id="@+id/tasbeeh_btn"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:alpha="0.5"
+			android:textSize="12sp"
+			android:layout_marginHorizontal="20dp"
+			android:backgroundTint="@color/light_gray"
+			android:drawableTop="@drawable/ic_tasbeeh"
+			android:text="@string/tasbeeh"
+			android:textColor="@color/black" />
+
+		<Button
+			android:id="@+id/settings_btn"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:alpha="0.5"
+			android:textSize="12sp"
+			android:layout_marginHorizontal="20dp"
+			android:backgroundTint="@color/light_gray"
+			android:drawableTop="@drawable/ic_settings"
+			android:text="@string/settings"
+			android:textColor="@color/black" />
+
+	</LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

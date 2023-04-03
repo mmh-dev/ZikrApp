@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/nav_graph"
+	app:startDestination="@id/mainFragment">
+	<fragment
+		android:id="@+id/zikrFragment"
+		android:name="com.mmh.zikrapp.ui.ZikrFragment"
+		android:label="fragment_zikr"
+		tools:layout="@layout/fragment_zikr" >
+		<action
+			android:id="@+id/action_zikrFragment_to_mainFragment"
+			app:destination="@id/mainFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/tasbeehFragment"
+		android:name="com.mmh.zikrapp.ui.TasbeehFragment"
+		android:label="fragment_tasbeeh"
+		tools:layout="@layout/fragment_tasbeeh" >
+		<action
+			android:id="@+id/action_tasbeehFragment_to_mainFragment"
+			app:destination="@id/mainFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/settingsFragment"
+		android:name="com.mmh.zikrapp.SettingsFragment"
+		android:label="SettingsFragment" >
+		<action
+			android:id="@+id/action_settingsFragment_to_mainFragment"
+			app:destination="@id/mainFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/mainFragment"
+		android:name="com.mmh.zikrapp.ui.MainFragment"
+		android:label="fragment_main"
+		tools:layout="@layout/fragment_main" >
+		<action
+			android:id="@+id/action_mainFragment_to_zikrFragment"
+			app:destination="@id/zikrFragment" />
+		<action
+			android:id="@+id/action_mainFragment_to_tasbeehFragment"
+			app:destination="@id/tasbeehFragment" />
+		<action
+			android:id="@+id/action_mainFragment_to_settingsFragment"
+			app:destination="@id/settingsFragment" />
+	</fragment>
+</navigation>
