@@ -1,7 +1,8 @@
-package com.mmh.zikrapp
+package com.mmh.zikrapp.ui
 
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
+import com.mmh.zikrapp.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
 

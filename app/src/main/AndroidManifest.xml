@@ -12,12 +12,6 @@
 		android:theme="@style/Theme.ZikrApp"
 		tools:targetApi="31">
 		<activity
-			android:name=".TasbeehActivity"
-			android:exported="false" />
-		<activity
-			android:name=".ZikrActivity"
-			android:exported="false" />
-		<activity
 			android:name=".ui.MainActivity"
 			android:exported="true">
 			<intent-filter>

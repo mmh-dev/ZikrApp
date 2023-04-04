@@ -11,6 +11,7 @@ import com.mmh.zikrapp.databinding.FragmentZikrBinding
 import com.mmh.zikrapp.entity.DuaItem
 import org.json.JSONArray
 import org.json.JSONException
+import java.io.BufferedReader
 
 
 class ZikrFragment : Fragment() {
@@ -18,18 +19,8 @@ class ZikrFragment : Fragment() {
     private val binding: FragmentZikrBinding by lazy {
         FragmentZikrBinding.inflate(layoutInflater)
     }
-    private val duaAdapter = DuaAdapter(onItemClick = { title: String? ->  increaseCount(title) })
-
-    private fun increaseCount(title: String?) {
-        duaList.filter { it.title == title }.forEach { it.quantity++ }
-        val index = duaList.indexOfFirst { it.title == title }
-        if (index != -1) {
-            duaAdapter.notifyItemChanged(index, Unit)
-        }
-    }
-
+    private val duaAdapter = DuaAdapter(onItemClick = { title: String ->  increaseCount(title) })
     private var duaList = mutableListOf<DuaItem>()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,12 +40,16 @@ class ZikrFragment : Fragment() {
         duaAdapter.submitList(duaList)
     }
 
+    private fun increaseCount(title: String) {
+        duaList.filter { it.title == title }.forEach { it.quantity++ }
+        val index = duaList.indexOfFirst { it.title == title }
+        if (index != -1) duaAdapter.notifyItemChanged(index, Unit)
+    }
+
     private fun getDuaFromJson(): MutableList<DuaItem> {
         val duaItems = mutableListOf<DuaItem>()
         try {
-            val jsonString = requireActivity().assets.open("data.json").bufferedReader().use {
-                it.readText()
-            }
+            val jsonString = requireActivity().assets.open("data.json").bufferedReader().use(BufferedReader::readText)
             val jsonArray = JSONArray(jsonString)
             for (i in 0 until jsonArray.length()) {
                 val jsonObject = jsonArray.getJSONObject(i)
@@ -74,7 +69,6 @@ class ZikrFragment : Fragment() {
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-
         return duaItems
     }
 }

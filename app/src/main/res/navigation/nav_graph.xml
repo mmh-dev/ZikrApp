@@ -24,7 +24,7 @@
 	</fragment>
 	<fragment
 		android:id="@+id/settingsFragment"
-		android:name="com.mmh.zikrapp.SettingsFragment"
+		android:name="com.mmh.zikrapp.ui.SettingsFragment"
 		android:label="SettingsFragment" >
 		<action
 			android:id="@+id/action_settingsFragment_to_mainFragment"
