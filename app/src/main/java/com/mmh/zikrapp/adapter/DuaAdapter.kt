@@ -21,7 +21,12 @@ class DuaAdapter(val onItemClick: (title: String) -> Unit) :
                 arabicTv.text = dua.arabic
                 translitTv.text = dua.transliteration
                 uzbekTv.text = dua.uzbek
-                countTv.text = dua.quantity.toString()
+                countTv.text = dua.clickedCount.toString()
+
+                if (dua.clickedCount >= dua.totalCount) {
+                    linearLayout.setBackgroundResource(android.R.color.darker_gray)
+                }
+
                 root.setOnClickListener {
                     onItemClick(dua.title)
                 }

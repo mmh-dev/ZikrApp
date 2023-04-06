@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mmh.zikrapp.adapter.DuaAdapter
-import com.mmh.zikrapp.R
 import com.mmh.zikrapp.databinding.FragmentZikrBinding
 import com.mmh.zikrapp.entity.DuaItem
 import org.json.JSONArray
@@ -41,7 +40,9 @@ class ZikrFragment : Fragment() {
     }
 
     private fun increaseCount(title: String) {
-        duaList.filter { it.title == title }.forEach { it.quantity++ }
+        duaList.filter { it.title == title }.forEach {
+            if (it.clickedCount < it.totalCount) it.clickedCount++
+        }
         val index = duaList.indexOfFirst { it.title == title }
         if (index != -1) duaAdapter.notifyItemChanged(index, Unit)
     }
@@ -53,6 +54,7 @@ class ZikrFragment : Fragment() {
             val jsonArray = JSONArray(jsonString)
             for (i in 0 until jsonArray.length()) {
                 val jsonObject = jsonArray.getJSONObject(i)
+                val totalCount = jsonObject.getInt("count")
                 val title = jsonObject.getString("title")
                 val arabic = jsonObject.getString("arabic")
                 val transliteration = jsonObject.getString("transliteration")
@@ -62,7 +64,8 @@ class ZikrFragment : Fragment() {
                     arabic = arabic,
                     transliteration = transliteration,
                     uzbek = uzbek,
-                    quantity = 0
+                    clickedCount = 0,
+                    totalCount = totalCount
                 )
                 duaItems.add(duaItem)
             }

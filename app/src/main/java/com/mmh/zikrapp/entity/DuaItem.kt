@@ -2,7 +2,8 @@ package com.mmh.zikrapp.entity
 
 data class DuaItem(
     val arabic: String,
-    var quantity: Int,
+    var clickedCount: Int,
+    val totalCount: Int,
     val title: String,
     val transliteration: String,
     val uzbek: String
